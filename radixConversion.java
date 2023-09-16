@@ -82,16 +82,14 @@ public class radixConversion {
     }
     private static String convertDecimalToBinary(int decimal) {
         if (decimal == 0) {
-            return "0"; // Special case for zero
+            return "0";
         }
-        
         StringBuilder binary = new StringBuilder();
         while (decimal > 0) {
             int remainder = decimal % 2;
-            binary.insert(0, remainder); // Insert the remainder at the beginning
-            decimal /= 2; // Divide the decimal number by 2
+            binary.insert(0, remainder);
+            decimal /= 2; 
         }
-        
         return binary.toString();
     }
 }
