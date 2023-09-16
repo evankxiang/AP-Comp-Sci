@@ -1,3 +1,9 @@
+/*
+ * Evan Xiang
+ * AP Comp Sci A - Mr.Haytock
+ * Radix Conversion Project
+ * September 15th 2023
+ */
 import java.util.Scanner;
 public class radixConversion {
     public static void main(String args[]) {
@@ -20,14 +26,14 @@ public class radixConversion {
             int output = convertOctalToDecimal(numToConvert);
             System.out.println("Decimal: " + output);
         } else if (radix.equalsIgnoreCase("Decimal")) {
-            int output = Integer.parseInt(numToConvert);
-            System.out.println("Decimal: " + output);
+            int decimalInput = Integer.parseInt(numToConvert);
+            String output = convertDecimalToBinary(decimalInput);
+            System.out.println("Binary: " + output);
         } else if (radix.equalsIgnoreCase("Hexadecimal")) {
             int output = convertHexadecimalToDecimal(numToConvert);
             System.out.println("Decimal: " + output);
         }
     }
-
     // Helper method to convert binary to decimal
     private static int convertBinaryToDecimal(String binary) {
         int decimal = 0;
@@ -43,7 +49,6 @@ public class radixConversion {
         }
         return decimal;
     }
-
     // Helper method to convert octal to decimal
     private static int convertOctalToDecimal(String octal) {
         int decimal = 0;
@@ -59,7 +64,6 @@ public class radixConversion {
         }
         return decimal;
     }
-
     // Helper method to convert hexadecimal to decimal
     private static int convertHexadecimalToDecimal(String hex) {
         int decimal = 0;
@@ -76,7 +80,18 @@ public class radixConversion {
         }
         return decimal;
     }
-    //private static String convertDecimalToBinary(int numToConvert) {
-    	//Figuring this one out currently
-    //}
+    private static String convertDecimalToBinary(int decimal) {
+        if (decimal == 0) {
+            return "0"; // Special case for zero
+        }
+        
+        StringBuilder binary = new StringBuilder();
+        while (decimal > 0) {
+            int remainder = decimal % 2;
+            binary.insert(0, remainder); // Insert the remainder at the beginning
+            decimal /= 2; // Divide the decimal number by 2
+        }
+        
+        return binary.toString();
+    }
 }
