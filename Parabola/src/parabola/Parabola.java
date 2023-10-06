@@ -12,20 +12,18 @@ import java.util.Scanner;
 
 public class Parabola extends SSAWindow
 {
-
     double a, b, c;
     double scale = 1.0/300; // 300 pixels = 1 unit
+    int NUMSEGMENTS = 1200;
     static final int WIDTH = 600;
     static final int HEIGHT = 600;
-    int NUMSEGMENTS = 1200;
-    static Scanner input = new Scanner(System.in);
-    static final double INCREMENT = 0.01;
     static int aval;
     static int bval;
     static int cval;
+    static Scanner input = new Scanner(System.in);
+    static final double INCREMENT = 0.001;
     public static void main(String[] args)
     {
-
         Parabola canvas = new Parabola(WIDTH, HEIGHT);
         canvas.drawParabola();
     }
@@ -46,7 +44,6 @@ public class Parabola extends SSAWindow
         drawString("C: " + cval, 80,50);
         drawString("Your Equation Is: " + aval + "x^2+" + bval + "x+" + cval,20,70);
     }
-
     //draws the axes using a for loop for the X-axis and Y-axis
     void drawAxes()
     {
@@ -61,19 +58,20 @@ public class Parabola extends SSAWindow
         int screenX = (int) (WIDTH/2 * x) + WIDTH/2;
         return screenX;
     }
- //converts unit coords on the cartesian plane to screen on Y-axis
+    //converts unit coords on the cartesian plane to screen on Y-axis
     static int worldToScreenY(double y)
     {
         int screenY =  (int) (-HEIGHT/2 * y) + HEIGHT/2;
+        System.out.println(screenY);
         return screenY;
     }
-//find the yval of every point using the standard form of the quadratic
+    //find the yval of every point using the standard form of the quadratic
     static double f1(double x){
         double yval;
         yval = aval*Math.pow(x,2.0)+bval*x+cval;
         return yval;
     }
-//calls all above methods needed and plots the points according to preset increment variable(0.01)
+    //calls all above methods needed and plots the points according to preset increment variable(0.01)
     void drawParabola()
     {
         drawAxes();
@@ -86,20 +84,4 @@ public class Parabola extends SSAWindow
     {
         super(width, height);
     }
-    // use this for keyPress input
-    public void keyPressed(int code)
-    {
-        if(code==65)
-            System.out.println("HELLO");
-        else System.out.println(code);
-    }
-
-    // use this for mouse input
-    public void mousePressed(int x, int y)
-    {
-        System.out.println("HI");
-        if (x >= 200 && x <= 350)
-            fillRect(x, y, 25, 15);
-    }
-
 }
