@@ -37,16 +37,17 @@ public class Parabola extends SSAWindow
     {
         drawString("Standard form of the Quadratic is " + "ax^2+bx+c", 20,30);
         drawString("Remember to go to console for your inputs!",20,10);
-        drawString("A:" + a, 20,50);
-        drawString("B: " + b, 50,50);
-        drawString("C: " + c, 80,50);
-        drawString("Your Equation Is: " + a + "x^2+" + b + "x+" + c,20,70);
         System.out.println("What is your LE?");
         aval = Integer.parseInt(input.nextLine());
         System.out.println("What is your B value?");
         bval = Integer.parseInt(input.nextLine());
         System.out.println("What is your C value?");
         cval = Integer.parseInt(input.nextLine());
+        drawString("A:" + aval, 20,50);
+        drawString("B: " + bval, 50,50);
+        drawString("C: " + cval, 80,50);
+        drawString("Your Equation Is: " + aval + "x^2+" + bval + "x+" + cval,20,70);
+
     }
 
     //
