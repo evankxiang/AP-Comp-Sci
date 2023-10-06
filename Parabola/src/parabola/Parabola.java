@@ -21,7 +21,7 @@ public class Parabola extends SSAWindow
     static int bval;
     static int cval;
     static Scanner input = new Scanner(System.in);
-    static final double INCREMENT = 0.001;
+    static final double INCREMENT = 0.0015;
     public static void main(String[] args)
     {
         Parabola canvas = new Parabola(WIDTH, HEIGHT);
@@ -56,6 +56,7 @@ public class Parabola extends SSAWindow
     static int worldToScreenX(double x)
     {
         int screenX = (int) (WIDTH/2 * x) + WIDTH/2;
+        System.out.println(screenX);
         return screenX;
     }
     //converts unit coords on the cartesian plane to screen on Y-axis
@@ -69,9 +70,10 @@ public class Parabola extends SSAWindow
     static double f1(double x){
         double yval;
         yval = aval*Math.pow(x,2.0)+bval*x+cval;
+        System.out.println(yval);
         return yval;
     }
-    //calls all above methods needed and plots the points according to preset increment variable(0.01)
+    //calls all above methods needed and plots the points according to preset increment variable(0.001)
     void drawParabola()
     {
         drawAxes();
