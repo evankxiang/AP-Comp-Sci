@@ -14,7 +14,7 @@ public class Parabola extends SSAWindow
 {
     double a, b, c;
     double scale = 1.0/300; // 300 pixels = 1 unit
-    int NUMSEGMENTS = 1200;
+    int NUMSEGMENTS = 1/300;
     static final int WIDTH = 600;
     static final int HEIGHT = 600;
     static int aval;
@@ -47,9 +47,9 @@ public class Parabola extends SSAWindow
     //draws the axes using a for loop for the X-axis and Y-axis
     void drawAxes()
     {
-        for(int x = 1;x<=10000;x+=20)
+        for(int x = 1;x<=10000;x+=25)
             drawLine(x, 300, x+20, 300);
-        for(int y = 1;y<=10000;y+=20)
+        for(int y = 1;y<=10000;y+=25)
             drawLine(300,y,300,y+20);
     }
     //converts unit coords on the cartesian plane to screen on X-axis
