@@ -1,12 +1,11 @@
 /*
     Name: Evan Xiang 
-    Date:9/28/2023
+    Course: AP Comp Sci - Mr. Haytock
+    Due Date: 10/12/2023
     Description: Parabola Drawing Program - Project #1
 
 */
-
 package parabola;
-
 import cs.ssa.*;
 import java.util.Scanner;
 
