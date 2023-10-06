@@ -20,12 +20,15 @@ public class Parabola extends SSAWindow
     int NUMSEGMENTS = 1200;
     static Scanner input = new Scanner(System.in);
     static final double INCREMENT = 0.1;
+    static int aval;
+    static int bval;
+    static int cval;
     public static void main(String[] args)
     {
 
         Parabola canvas = new Parabola(WIDTH, HEIGHT);
         canvas.drawAxes();
-
+        canvas.getInput();
         canvas.drawParabola();
     }
 
@@ -38,6 +41,12 @@ public class Parabola extends SSAWindow
         drawString("B: " + b, 50,50);
         drawString("C: " + c, 80,50);
         drawString("Your Equation Is: " + a + "x^2+" + b + "x+" + c,20,70);
+        System.out.println("What is your LE?");
+        aval = Integer.parseInt(input.nextLine());
+        System.out.println("What is your B value?");
+        bval = Integer.parseInt(input.nextLine());
+        System.out.println("What is your C value?");
+        cval = Integer.parseInt(input.nextLine());
     }
 
     //
@@ -62,13 +71,7 @@ public class Parabola extends SSAWindow
     }
     static double f1(double x){
         double yval;
-        System.out.println("What is your LE?");
-        int a = Integer.parseInt(input.nextLine());
-        System.out.println("What is your B value?");
-        int b = Integer.parseInt(input.nextLine());
-        System.out.println("What is your C value?");
-        int c = Integer.parseInt(input.nextLine());
-        yval = a*Math.pow(x,2.0)+b*x+c;
+        yval = aval*Math.pow(x,2.0)+bval*x+cval;
         return yval;
     }
     void drawParabola()
