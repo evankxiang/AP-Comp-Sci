@@ -79,6 +79,7 @@ public class Parabola extends SSAWindow
         getInput();
         for(double i = -1.0;i<=1.0;i+=INCREMENT){
             putPixel(worldToScreenX(i), worldToScreenY(f1(i)));
+            drawLine(worldToScreenX(i), worldToScreenY(f1(i)), worldToScreenX(i), -100000);
         }
     }
     Parabola(int width, int height)
