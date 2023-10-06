@@ -27,8 +27,6 @@ public class Parabola extends SSAWindow
     {
 
         Parabola canvas = new Parabola(WIDTH, HEIGHT);
-        canvas.drawAxes();
-        canvas.getInput();
         canvas.drawParabola();
     }
 
@@ -47,7 +45,6 @@ public class Parabola extends SSAWindow
         drawString("B: " + bval, 50,50);
         drawString("C: " + cval, 80,50);
         drawString("Your Equation Is: " + aval + "x^2+" + bval + "x+" + cval,20,70);
-
     }
 
     //
@@ -58,7 +55,6 @@ public class Parabola extends SSAWindow
         for(int y = 1;y<=10000;y+=20)
             drawLine(300,y,300,y+20);
     }
-
     static int worldToScreenX(double x)
     {
         int screenX = (int) (WIDTH/2 * x) + WIDTH/2;
@@ -77,6 +73,8 @@ public class Parabola extends SSAWindow
     }
     void drawParabola()
     {
+        drawAxes();
+        getInput();
         for(double i = -1.0;i<=1.0;i+=INCREMENT){
             putPixel(worldToScreenX(i), worldToScreenY(f1(i)));
         }
