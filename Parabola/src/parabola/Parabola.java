@@ -20,7 +20,7 @@ public class Parabola extends SSAWindow
     static int bval;
     static int cval;
     static Scanner input = new Scanner(System.in);
-    static final double INCREMENT = 0.0015;
+    static final double INCREMENT = 0.001;
     public static void main(String[] args)
     {
         Parabola canvas = new Parabola(WIDTH, HEIGHT);
@@ -79,9 +79,14 @@ public class Parabola extends SSAWindow
         getInput();
         for(double i = -1.0;i<=1.0;i+=INCREMENT){
             putPixel(worldToScreenX(i), worldToScreenY(f1(i)));
-            drawLine(worldToScreenX(i), worldToScreenY(f1(i)), worldToScreenX(i), 100000);
+            showGrid(true);
         }
     }
+    Parabola(int width, int height)
+    {
+        super(width, height);
+    }
+}
     Parabola(int width, int height)
     {
         super(width, height);
