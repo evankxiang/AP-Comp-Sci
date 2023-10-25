@@ -5,7 +5,7 @@
     Tasks done(Methods in Parantheses):
     - String Returning Function(additiveCipher/bruteForceAdditiveCipher/caesarSquare)
     - Additive Cipher(additiveCipher)
-    - Decryption(bruteForceAdditiveCipher)
+    - Decryption(bruteForceAdditiveCipher), brute forces using a scoring system with 1000 common English words
     - Caesar Square(caesarSquare)
 */
 package encryption;
