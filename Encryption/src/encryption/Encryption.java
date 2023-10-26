@@ -17,22 +17,51 @@ public class Encryption
     static Scanner input;
     static String encrypt = "";
     static int cipher;
+    static String[] morseCodeArray = {
+            ".-",   // A
+            "-...",  // B
+            "-.-.",  // C
+            "-..",   // D
+            ".",     // E
+            "..-.",  // F
+            "--.",   // G
+            "....",  // H
+            "..",    // I
+            ".---",  // J
+            "-.-",   // K
+            ".-..",  // L
+            "--",    // M
+            "-.",    // N
+            "---",   // O
+            ".--.",  // P
+            "--.-",  // Q
+            ".-.",   // R
+            "...",   // S
+            "-",     // T
+            "..-",   // U
+            "...-",  // V
+            ".--",   // W
+            "-..-",  // X
+            "-.--",  // Y
+            "--..",  // Z
+            "/",     // Space
+        };
     public static void main(String[] args) 
     {
         input = new Scanner(System.in);
         while(true){
             System.out.println("What's your plaintext or ciphertext? ");
             encrypt = Keyboard.readString();
-            System.out.println("Enter command: 1 = Additive Cipher; 2 = Additive Decryption; 3 = Caesar Square Cipher; 4 = Caesar Sqare Decrypt; -1 = Quit");
+            System.out.println("Enter command: 1 = Additive Cipher; 2 = Additive Decryption; 3 = Morse Code Encryptor; 4 = Morse Decryptor; -1 = Quit");
             cipher = input.nextInt();
             if(cipher == 1){
                 System.out.println(additiveCipher());
             }else if(cipher == 2){
                 System.out.println(bruteForceAdditiveCipher());
             } else if(cipher == 3){
-                caesarSquare();
+                System.out.println(morseCode());
             } else if(cipher == 4){
-                caesarSquareDecryption();
+                System.out.println(decodeMorse());
             }
             else if(cipher == -1){
                 break;
@@ -143,6 +172,7 @@ public class Encryption
                 currentScore++;
             }
         }
+        // Compare the different scores in order to determine the best option
         if (currentScore > bestScore) {
             bestScore = currentScore;
             bestDecryption.setLength(0);
@@ -150,23 +180,41 @@ public class Encryption
         }
     }
     return bestDecryption.toString();
+    }
+
+    static public String morseCode() {
+        String inputText = encrypt.toUpperCase();
+        StringBuilder morseCode = new StringBuilder();
+        for (int i = 0; i < inputText.length(); i++) {
+            char c = inputText.charAt(i);
+            if (c == ' ') {
+                morseCode.append("/"); //adds a backslash in between words
+            } else if (c >= 'A' && c <= 'Z') {
+                int index = c - 'A'; 
+                morseCode.append(morseCodeArray[index]);
+                morseCode.append(" "); //add more spacing between words
+            }
+        }
+        return morseCode.toString().trim();
+    }
+    public static String decodeMorse(){  
+        String[] words = encrypt.split("\\s+/\\s+"); // Split words by spaces with slashes
+        StringBuilder decodedText = new StringBuilder();
+    
+        for (String word : words) {
+            String[] letters = word.split("\\s+"); // Split letters by spaces
+            for (String letter : letters) {
+                for (int i = 0; i < morseCodeArray.length; i++) {
+                    if (morseCodeArray[i].equals(letter)) {
+                        decodedText.append((char) ('A' + i));
+                        break;
+                    }
+                }
+            }
+            decodedText.append(" "); // Add spaces between words
+        }
+        return decodedText.toString().trim();
+    }
 }
 
 
-    static public String caesarSquare()
-    {
-        return encrypt;
-    }
-    
-    static public void caesarSquareDecryption()
-    {
-        // Enter string
-        // enter initial key
-        // display result
-        // option: display result to file
-        // option: decrypt
-        // trim out spaces
-    }
-    
-
-}
